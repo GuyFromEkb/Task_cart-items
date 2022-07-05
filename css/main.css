@@ -223,3 +223,11 @@ h4 {
 .none {
     display: none;
 }
+
+.cart-empty.hide {
+    display: none;
+}
+
+#order-form.hide {
+    display: none;
+}

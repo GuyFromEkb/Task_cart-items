@@ -14,16 +14,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 counter.innerText = ++counter.innerText;
             } else if (atr == "minus") {
 
-
+                //удаление из корзины
                 if (target.closest('.cart-wrapper')) {
 
                     if (counter.innerText == 1) {
 
                         target.closest('.cart-item').remove();
+                        emptyCart();
                     }
-
-
-
                 }
                 if (counter.innerText > 1)
 
@@ -33,14 +31,14 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    //товар в корзину
 
+    //КОРЗИНА
     const wraper = document.querySelector('.roll-wraper');
     const cartWraper = document.querySelector('.cart-wrapper');
 
 
 
-
+    //товар в корзину
     wraper.addEventListener('click', (e) => {
 
         const target = e.target;
@@ -61,24 +59,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
             renderCart(cardInfo);
             card.querySelector('[data-counter]').innerText = 1;
-
+            emptyCart();
 
         }
 
 
 
     });
+
+
+    //удаление из корзины
+
+
     cartWraper.addEventListener('click', (e) => {
         const target = e.target;
 
         if (target.classList.contains('cart-item__close') || target.closest('.cart-item__close')) {
             target.closest('.cart-item').remove();
+            emptyCart();
         }
-
-
 
     });
 
+
+    //добавление в корзину
     function renderCart({ id, imgSrc, name, quantity, weight, price, counter }) {
 
         const cartWrap = document.querySelector('.cart-wrapper');
@@ -140,9 +144,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     }
 
+    //информация о данных в  корзине
+    function emptyCart() {
+        console.log(cartWraper.children.length);
 
-    //удаление из корзины
-
+        if (cartWraper.children.length > 0) {
+            document.querySelector('.cart-empty').classList.add('hide');
+            document.querySelector('#order-form').classList.remove('hide');
+        } else {
+            document.querySelector('.cart-empty').classList.remove('hide');
+            document.querySelector('#order-form').classList.add('hide');
+        }
+    }
 
 
 
