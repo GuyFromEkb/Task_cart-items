@@ -36,6 +36,54 @@ document.addEventListener("DOMContentLoaded", function() {
     const wraper = document.querySelector('.roll-wraper');
     const cartWraper = document.querySelector('.cart-wrapper');
 
+    (function() {
+        //товар в корзину
+        const wraper = document.querySelector('.roll-wraper');
+        wraper.addEventListener('click', (e) => {
+
+            const target = e.target;
+
+            if (target.hasAttribute('data-cart')) {
+
+                const card = target.closest('.card');
+
+                const cardInfo = {
+                    id: +card.getAttribute('data-id'),
+                    imgSrc: card.querySelector('.product-img').getAttribute('src'),
+                    name: card.querySelector('.item-title').innerText,
+                    quantity: card.querySelector('.text-muted').innerText,
+                    weight: card.querySelector('.price__weight').innerText,
+                    price: card.querySelector('.price__currency').innerText,
+                    counter: +card.querySelector('[data-counter]').innerText
+                };
+
+                renderCart(cardInfo);
+                card.querySelector('[data-counter]').innerText = 1;
+                emptyCart();
+
+            }
+        });
+
+    })();
+    //удаление из корзины
+
+    // (function() {
+
+    // })();
+
+    (function() {
+        const cartWraper = document.querySelector('.cart-wrapper');
+
+        cartWraper.addEventListener('click', (e) => {
+            const target = e.target;
+
+            if (target.classList.contains('cart-item__close') || target.closest('.cart-item__close')) {
+                target.closest('.cart-item').remove();
+                emptyCart();
+            }
+
+        });
+    })();
 
 
     //товар в корзину
