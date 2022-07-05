@@ -161,9 +161,9 @@
 
                             <!-- Стоимость заказа -->
                             <div class="cart-total">
-                                <p><span class="h5">Доставка:</span> <span class="delivery-cost free">бесплатно</span> </p>
                                 <p><span class="h5">Кол-во порций:</span> <span class="total-count">0</span> <span class="total-count-postfix">шт</span></p>
-                                <p><span class="h5">Итого:</span> <span class="total-price">0</span> <span class="rouble">₽</span></p>
+                                <p class="salle"><span class="h5">Итого:</span> <span class="price-count total-price">0 </span><span class="salle-price"></span>
+                                </p>
                             </div>
                             <!-- // Стоимость заказа -->
 
@@ -172,13 +172,18 @@
                     <!-- Оформить заказ -->
                     <div id="order-form" class="hide card-body border-top">
                         <h5 class="card-title">Заполучить скидку</h4>
+
+
                             <form>
                                 <div class="form-group">
-                                    <input required type="number" class="form-control" placeholder="Желаеммая скидка в %">
+                                    <input name="sale" min="0" max="100" required type="number" class="form-control" placeholder="Желаеммая скидка в %">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Установить скидку</button>
                             </form>
-                            <button class="btn btn-primary btn-red">Убрать скидку</button>
+
+
+
+                            <button class=" off-discound btn btn-primary btn-red">Убрать скидку</button>
                     </div>
                     <!-- // Оформить заказ -->
 
